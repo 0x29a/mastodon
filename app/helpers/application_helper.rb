@@ -179,6 +179,18 @@ module ApplicationHelper
     cdn_host.present?
   end
 
+  def plausible_script_url
+    ENV['PLAUSIBLE_SCRIPT_URL'] if ENV['PLAUSIBLE_SCRIPT_URL'].present?
+  end
+
+  def plausible_script_url?
+    plausible_script_url.present?
+  end
+
+  def plausible_data_domain
+    Rails.configuration.x.local_domain
+  end
+
   def storage_host
     "https://#{ENV['S3_ALIAS_HOST'].presence || ENV['S3_CLOUDFRONT_HOST']}"
   end

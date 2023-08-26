@@ -36,6 +36,9 @@
     = stylesheet_link_tag '/inert.css', skip_pipeline: true, media: 'all', id: 'inert-style'
     = stylesheet_link_tag custom_css_path, skip_pipeline: true, host: root_url, media: 'all'
 
+    - if plausible_script_url?
+      %script{ defer: '', 'data-domain' => plausible_data_domain, src: plausible_script_url }
+
     = yield :header_tags
 
   %body{ class: body_classes }
